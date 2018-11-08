@@ -1,0 +1,52 @@
+
+Puesdo Code for Psychic-Game Assignment
+"Who Is That Doggie In the Window"
+
+Objects Properties Needed:
+    listOfWords 
+    themeComponents
+    wins
+    word
+    number of guesses remaining
+    letters already guessed
+
+Setup game data
+    create array to hold various dog breeds
+    generate random number to pick a breed from the array
+
+    determine how many letters needed to win
+    set how many guesses user is allowed
+
+Main()
+
+Present Game Start Page
+        
+    Accept key to start Game
+        if (any key) start game 
+        
+    Place empty word letters on game page
+         display under score character _ for each letter in a word to guessed
+         break the string answer apart and store in a array of letters
+
+LOOP
+    Get letter from player
+
+    if (keyboard letter equals word letter) {
+        place guessed letter in current word area 
+        place guessed letter in list of current letters used
+        do not increment number of guesses 
+    
+    if (word is guessed) {
+        increment number of wins
+        Display winner page
+        Present new word
+    }
+
+    Get next letter by executing Loop again
+
+     
+    
+
+
+        
+
