@@ -26,17 +26,17 @@ var game = {
       document.getElementById('myJumbotron').style.display='block';
     },
     setupGamePage: function() {
-      document.getElementById('myJumbotron-0').style.display='none';
+      document.getElementById('myJumbotron-1').style.display='none';
     },
     runGame: function() {
 
-     
+     game.setupGamePage();
 
     console.log("Start of game");
     console.log("--------------------");
     console.log(" ");
 
-    // var doggie = "rottweiler";
+    // var doggie = "husky";
 
     var doggie = game.breedToGuess();
 
@@ -48,6 +48,7 @@ var game = {
     
 
       document.onkeyup = function(event) {
+        
 
       game.lettersInWord = doggie.split("");
 
@@ -57,6 +58,8 @@ var game = {
     
 
       for (i=0; i< doggie.length; i++){
+
+        console.log("i= " + i);
 
           if (event.key === game.lettersInWord[i]) {
 
@@ -72,18 +75,25 @@ var game = {
           {
             console.log("game letter " + game.lettersInWord[i] +  " does not match key"); 
           }
-          
+
+        }
+
           if ( word == doggie){
-                console.log("");
-                console.log("---------------------------");
-                console.log("You guessed the word " + doggie);
-                matches = 0;
-                doggie = game.breedToGuess();
-                console.log("New doggie to guess= " + doggie);
-                console.log("----------------------------");
-                
-              }
-            }
+            console.log("");
+            console.log("---------------------------");
+            console.log("You guessed the word " + doggie);
+            matches = 0;
+            
+            word = "";
+            doggie = game.breedToGuess();
+            display = [doggie.length];
+            console.log("New doggie to guess= " + doggie);
+            console.log("----------------------------");
+            
+          }
+          
+          
+        
             // } 
             // else 
             //   {
