@@ -25,8 +25,14 @@
         }
 
         #h-1 {
-            display: none;
+            /* display: inline-block; */
+            /* display: none; */
         }
+        #status {
+            float:right;
+        }
+
+
 
     </style>
     </head>
@@ -43,17 +49,22 @@
             <p><a class="btn btn-lg btn-primary" onclick="game.turnOffWelcome();game.runGame()">Let's Play</a></p>
         </div>
 
-        <div id="myJumbotron-1" class="jumbotron">
-        <h2 id="h-1"> press a key to begin</h2>
-        </div>
-        
-        
-        <!-- <div id="myJumbotron-1" class="jumbotron">
-            <h6></h6>
-        </div> -->
+        <div id="myJumbotron-1" class="jumbotron" style="display:none;">
+            <div id="upperRuler"><h4>Enter your guess of a dog breed one letter at a time.</h4>
+                </div>
+            <hr>
+            <div id="lowerRuler">
+                    <p></p>
+                </div>
+                <div id="lowerRulerRight" style="float:right">
+                    <p>
+                </div>
+                <div id="lowerRulerRight-1" style="display:block;">
+                    </p>
+                </div>
 
-
-    </div>    
+            </div>
+        </div>    
             
 
         

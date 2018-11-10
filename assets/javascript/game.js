@@ -20,17 +20,18 @@ var game = {
     },
     turnOffWelcome: function() {
       document.getElementById('myJumbotron-0').style.display='none';
-      document.getElementById('h-1').style.display='block';
+      // document.getElementById('h-1').style.display='none';
     },
     turnOnWelcome: function() {
       document.getElementById('myJumbotron').style.display='block';
     },
     setupGamePage: function() {
-      document.getElementById('myJumbotron-1').style.display='none';
+      document.getElementById('myJumbotron-1').style.display='block';
+      
     },
     runGame: function() {
 
-     game.setupGamePage();
+     
 
     console.log("Start of game");
     console.log("--------------------");
@@ -40,22 +41,35 @@ var game = {
 
     var doggie = game.breedToGuess();
 
+    game.lettersInWord = doggie.split("");
+    game.guessesRemaining = 2 * game.lettersInWord.length;
+
     var numOfMatches=0;
     var matches = 0;
+    var letterMatches = 0;
 
     var display = [doggie.length];
     var guessesRemain = doggie.length;
-    
 
-      document.onkeyup = function(event) {
+    for (i=0 ; i < doggie.length ; i++){
+      display[i] = "_ ";
+    }
+
+    game.setupGamePage();
+    document.getElementById('lowerRuler').innerText = display.join("");
+
+    document.onkeyup = function(event) {
+
+    document.getElementById('lowerRulerRight-1').innerHTML = "<br>Number of Guesses Remaining: " + game.guessesRemaining--;
+    
+    document.getElementById('upperRuler').innerHTML = "<h4>Enter your guess of a dog breed one letter at a time.</h4> ";
         
 
-      game.lettersInWord = doggie.split("");
+      // game.lettersInWord = doggie.split("");
+      // game.guessesRemaining = 2 * game.lettersInWord;
 
       console.log("dog breed is " + doggie);
       console.log("key pressed = " + event.key);
-
-    
 
       for (i=0; i< doggie.length; i++){
 
@@ -65,10 +79,11 @@ var game = {
 
               console.log("game letter " +  game.lettersInWord[i] + " matches event key");
 
-              matches++;
-              console.log("Number of Matches = " + matches);
+              letterMatches++;
+              console.log("Number of Matches = " + letterMatches);
               display[i] = game.lettersInWord[i];
               var word = display.join("");
+              document.getElementById('lowerRuler').innerText = word;
               console.log("word = " + word);
           }
           else
@@ -79,46 +94,40 @@ var game = {
         }
 
           if ( word == doggie){
+            matches++;
+            document.getElementById('upperRuler').innerHTML = "<h4>Winner - You have guessed the correct breed " + word + "</h4>";
+            document.getElementById('lowerRulerRight').innerHTML = "<br>Number of Wins: " + matches;
+            document.getElementById('lowerRulerRight-1').innerHTML = "<br>Press any key to play again";
+
+            
+            // document.getElementById('lowerRulerRight').innerText = word;
             console.log("");
             console.log("---------------------------");
             console.log("You guessed the word " + doggie);
-            matches = 0;
+            // matches = 0;
             
             word = "";
             doggie = game.breedToGuess();
             display = [doggie.length];
+            game.lettersInWord = doggie.split("");
+            game.guessesRemaining = 2 * game.lettersInWord.length;
+            // game.setupGamePage();
+            for (i=0 ; i < doggie.length ; i++){
+              display[i] = "_ ";
+            }
+            document.getElementById('lowerRuler').innerText = display.join("");
+            
+            
             console.log("New doggie to guess= " + doggie);
             console.log("----------------------------");
             
+            // Reload the word guess area with under scores
+
           }
-          
-          
-        
-            // } 
-            // else 
-            //   {
-            //     console.log("game letter " + game.lettersInWord[i] +  " does not match key");
-            //   } 
-                // } 
-            // else 
-            //   {
-            //     console.log("game letter " + game.lettersInWord[i] +  " does not match key");
-            //   } 
-        }
-      
+        }      
     }
     };
-        
-        
-        
-        // if (game.lettersInWord[i] === event.key) {
-        //      console.log("correct letter guessed " + game.lettersInWord[i]);
-        //      i++;
-        //      if (i+1 == doggie.length){
-        //       console.log("word is matched");
-        //       i=0;
-        //      }
-        // }
+ 
         
         
 
