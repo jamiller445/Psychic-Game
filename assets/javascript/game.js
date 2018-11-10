@@ -47,6 +47,7 @@ var game = {
     var numOfMatches=0;
     var matches = 0;
     var letterMatches = 0;
+    var losses = 0;
 
     var display = [doggie.length];
     var guessesRemain = doggie.length;
@@ -88,7 +89,22 @@ var game = {
           }
           else
           {
-            console.log("game letter " + game.lettersInWord[i] +  " does not match key"); 
+            console.log("game letter " + game.lettersInWord[i] +  " does not match key");
+
+            if (game.guessesRemaining == 0){
+              document.getElementById('lowerRulerRight-1').innerHTML = "<br>You have no guesses left. Press any key for another word";
+              // document.getElementById('lowerRulerRight-2').innerHTML = "<br>Number of Losses: 0";
+              doggie = game.breedToGuess();
+              display = [doggie.length];
+              game.lettersInWord = doggie.split("");
+              game.guessesRemaining = 2 * game.lettersInWord.length;
+              console.log("**********************    game.guessRemaining= " + game.guessesRemaining);
+            // game.setupGamePage();
+              for (i=0 ; i < doggie.length ; i++){
+               display[i] = "_ ";
+              }
+              document.getElementById('lowerRuler').innerText = display.join(""); 
+              }
           }
 
         }
